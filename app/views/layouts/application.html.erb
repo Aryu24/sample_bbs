@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>0ch</title>
+    <meta charset="UTF-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <%= link_to root_path do %>
+        <h2 class="">0ch</h2>
+      <% end %>
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt"> logout</i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path, class: "nav-link" do %>
+              <i class="fas fa-edit"> sign up</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: "nav-link" do %>
+              <i class="fas fa-sign-in-alt"> login</i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>CopyRight <></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
